@@ -1,22 +1,26 @@
 <?php 
-    include_once("");
+    require_once("../Model/ModelLogin.php");
+    require_once("../Configuration/Config.php");
 
-    $msg_error = "";
-    
-    if( isset($_POST["login"]) && isset($_POST["senha"]) ){
-        $login =  htmlspecialchars($_POST["login"]);
-        $senha = htmlspecialchars($_POST["senha"]);
+    class AutenticaController{
+        private $model;
         
-        $stmt = $conexao->query("SELECT id, nome, senha FROM upload WHERE usuario = '$login' AND senha='$senha' LIMIT 1");
-        $result = $stmt->fetch_object();
-    
-        if( $result->id !== null ) {
-            session_start();
-            $_SESSION["usuario"] = $result->usuario;
-            $_SESSION["nome"] = $result->nome;
-            header('Location: Anexo.php');
-        }else{
-            $msg_error = "<div class='alert alert-danger mt-3 text-center'> <i class='bi bi-exclamation-triangle-fill'></i> Usuário ou senha incorretos </div>";
+        public function __construct()
+        {
+            $db = new Database();
+            $this->model = new AutenticaLogin($db->connect());
+        }
+
+        public function autenticacao($nome, $senha){
+            if($this->model->autenticacao($nome, $senha)){
+                $_SESSION["autenticacao"]=true;
+                return true;
+            }
+             return false;
+        }
+        
+        public function logout(){
+            session_destroy();
         }
     }
 ?>

@@ -12,7 +12,7 @@
 <body>
     <div class="form-box">
         <h2>LOGIN</h2>
-        <form action=" #">
+        <form action="index.php?action=login" method="POST">
 
             <div class="input-group ">
                 <label for="email">Usuário</label>

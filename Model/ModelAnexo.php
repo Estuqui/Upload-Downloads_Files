@@ -8,15 +8,12 @@ class Anexo{
     }
 
     public function UploadArquivo($nome,$caminho){
-        //inserir arquivo no db
-    }
-    
-    public function IdArquivo($Id)
-        //inserir lógica banco aqui
         
-    
-    {
+    }
+    public function IdArquivo($Id){
         
     }
 }
+
+
 ?>
