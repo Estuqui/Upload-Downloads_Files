@@ -1,6 +1,27 @@
 <?php 
 
-    include("/home/jessica/www/Upload/conexao.php");
+    require_once("./Model/ModelAnexo.php");
+    require_once("./Configuration/Config.php");
+
+
+
+    class UploadController {
+        private $model;
+         
+        public function __construct()
+        {
+            $db = new DataBase(); 
+            $this->model = new Anexo($db->connect());
+        }
+
+        public function UploadArquivo($nome, $caminho){
+            $this->model->UploadArquivo($nome, $caminho);
+        }
+
+        public function DisplayArquivo($id){
+            //add lógica exibir arquivo
+        }
+    }
 
     if(isset($_FILES["arquivo"])){
         $arquivo = $_FILES["arquivo"];
@@ -39,40 +60,3 @@
     $sql=$mysqli->query("SELECT * FROM arquivos") or die($mysqli->error);
     
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de Arquivos</title>
-</head>
-
-<body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" name="acao" value="Enviar Arquivo">
-    </form>
-    <table>
-        <thead>
-            <th>Preview</th>
-            <th>Arquivo</th>
-            <th>Data de Envio</th>
-        </thead>
-        <tbody>
-            <?php while($arquivo=$sql->fetch_assoc()){
-                }
-            ?>
-            <tr>
-                <td> <?php echo $arquivo['nome']; ?> </td>
-                <td> <?php echo $arquivo['nome']; ?> </td>
-                <td> <?php echo date("d/m/Y H:i", strtotime($arquivo['data_upload']));?> </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-</body>
-
-</html>
