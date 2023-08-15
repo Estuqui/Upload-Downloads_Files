@@ -1,5 +1,5 @@
 <?php 
-    require_once("../Configuration/Database.php");
+    require_once("./Configuration/Database.php");
 
     class UserModel{
         public function isValidUser($email){

@@ -1,6 +1,6 @@
 <?php 
 
-    require_once("../Configuration/Database.php");
+    require_once("./Configuration/Database.php");
 
     class FileModel {
         public function InserirArquivo($UserId, $CaminhodoArquivo) {
@@ -19,8 +19,10 @@
         }
 
         public function ListarArquivos($userId){
-            //TODO - SELECT ALL de anexos onde UserId é igual $UserId
-            //retornar fetchassoc
+            $pdo = GetDb();
+            $stmt = $pdo->prepare("SELECT * FROM anexos WHERE UserId = $userId");
+            $stmt->execute();
+            return $stmt->fetchObject();
         }
     }
 
