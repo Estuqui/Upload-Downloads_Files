@@ -20,9 +20,9 @@
         header("Location: /");
     }
     
-    //getfile deve ser chamado ao clicar em botao com target _blank
-    //listfiles deve ser incluido na anexo.php abaixo do formulario
-    // chamar getfiles -> Controllers/FileController.php?action=getfile&id=<IDDOARQUIVO>
+    //Terminar conforme anotações
+    
+    
     if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]))  {
         $fileModel = new FileModel();
 

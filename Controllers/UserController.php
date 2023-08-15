@@ -1,6 +1,8 @@
 <?php
+ 
+ echo"OK";
     session_start();
-    require_once("./Model/UserModel.php"); 
+    require_once("../Model/UserModel.php"); 
     
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $email = $_POST["email"];
@@ -24,13 +26,14 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
+       
         if($_GET["action"] == "logout") {
             session_unset();
             session_destroy();
             header("Location: ./Views/Login.php");
         }
         else if($_GET["action"] == "register") {
-            //TODO
+            //Terminar
             include_once("../Views/Register.php");
         }
     }

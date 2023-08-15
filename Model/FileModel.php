@@ -1,6 +1,6 @@
 <?php 
 
-    require_once("./Configuration/Database.php");
+    require_once("../Configuration/Database.php");
 
     class FileModel {
         public function InserirArquivo($UserId, $CaminhodoArquivo) {
@@ -9,8 +9,8 @@
             $stmt->execute([$UserId, $CaminhodoArquivo]);
         }
         
-        //$arquivo = $fileModel->ObterArquivo($idDoArquivo);
-        //header ... $arquivo["caminho"];
+        //Terminar conforme anotações
+       
         public function ObterArquivo($arquivoId){
             $pdo = GetDb();
             $stmt = $pdo->prepare("SELECT * FROM anexos WHERE id = ?");
