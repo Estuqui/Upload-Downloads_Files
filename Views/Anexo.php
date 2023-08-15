@@ -12,7 +12,9 @@ if (!isset($_SESSION["loggedIn"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Views/CSS/AnexoEstilo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <title>FIle Upload</title>
+    <title>Home
+
+    </title>
 </head>
 
 <body>
@@ -34,6 +36,8 @@ if (!isset($_SESSION["loggedIn"])) {
         <input type="file" name="file" accept=".pdf,.txt,.doc,.docx">
         <input type="submit" value="Enviar Arquivo">
     </form>
+
+
 
     <div class="tabela">
         <table class="table table-dark text-center">
