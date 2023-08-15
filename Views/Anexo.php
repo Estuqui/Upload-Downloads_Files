@@ -1,7 +1,7 @@
-<?php 
-    if(!isset($_SESSION["loggedIn"])) {
-        header("Location: Login.php");
-    }
+<?php
+if (!isset($_SESSION["loggedIn"])) {
+    header("Location: Login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +34,21 @@
         <input type="file" name="file" accept=".pdf,.txt,.doc,.docx">
         <input type="submit" value="Enviar Arquivo">
     </form>
+
+    <div class="tabela">
+        <table class="table table-dark text-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UserId</th>
+                    <th>Caminho</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+
+            <tbody>
+        </table>
 </body>
 
 

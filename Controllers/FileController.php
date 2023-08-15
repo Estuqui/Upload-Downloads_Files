@@ -3,7 +3,6 @@
     require_once("../Model/FileModel.php");
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        var_dump($_FILES);
 
         $fileModel = new FileModel();
         $filename = $_FILES["file"]["name"];
@@ -15,13 +14,10 @@
             move_uploaded_file($fileTemp, $caminho);
         }
 
-        $fileModel->InserirArquivo("1", $caminho);
+        $fileModel->InserirArquivo($userId, $caminho);
 
         header("Location: /");
     }
-    
-    //Terminar conforme anotações
-    
     
     if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]))  {
         $fileModel = new FileModel();
@@ -35,9 +31,10 @@
             $arquivos = $fileModel->ListarArquivos($_SESSION["userId"]);
             
             foreach($arquivos as $arquivo) {
+                echo "<td>" . $arquivo["id"] . "</td>";
+                echo "<td>" . $arquivo["UserId"] . "</td>";
                 echo "<td>" . $arquivo["caminho"] . "</td>";
+            
             }
         }
     }
-    
-?>

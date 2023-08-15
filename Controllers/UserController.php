@@ -1,6 +1,4 @@
 <?php
- 
- echo"OK";
     session_start();
     require_once("../Model/UserModel.php"); 
     
@@ -17,11 +15,11 @@
                 header("Location: /");
             }
             else {
-                echo "Senha incorreta";
+                echo "Senha inválida";
             }
         } 
         else {
-            echo "Usuario não existe";
+            echo "Usuario inválido";
         }
     }
 
@@ -30,7 +28,7 @@
         if($_GET["action"] == "logout") {
             session_unset();
             session_destroy();
-            header("Location: ./Views/Login.php");
+            header("Location: /");
         }
         else if($_GET["action"] == "register") {
             //Terminar

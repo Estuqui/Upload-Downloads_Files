@@ -8,6 +8,7 @@
 
 body {
   background-color: #c8d6c4;
+  align-items: center;
 }
 
 h1 {
@@ -15,7 +16,6 @@ h1 {
   margin: 4px;
   color: #184d15;
 }
-
 
 nav {
   background-color: #184d15;

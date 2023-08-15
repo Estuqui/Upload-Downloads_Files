@@ -8,8 +8,6 @@
             $stmt = $pdo->prepare("INSERT INTO anexos (UserId, caminho) VALUES (?, ?)");
             $stmt->execute([$UserId, $CaminhodoArquivo]);
         }
-        
-        //Terminar conforme anotações
        
         public function ObterArquivo($arquivoId){
             $pdo = GetDb();
@@ -21,7 +19,7 @@
         public function ListarArquivos($userId){
             $pdo = GetDb();
             $stmt = $pdo->prepare("SELECT * FROM anexos WHERE UserId = $userId");
-            $stmt->execute();
+            $stmt->execute([$userId]);
             return $stmt->fetchObject();
         }
     }
