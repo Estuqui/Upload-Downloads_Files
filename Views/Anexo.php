@@ -36,19 +36,25 @@ if (!isset($_SESSION["loggedIn"])) {
         <input type="submit" value="Enviar Arquivo">
     </form>
 
-    <div class="tabela">
-        <table class="table table-dark">
+    <div>
+        <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>UserId</th>
-                    <th>Caminho</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
-
             <tbody>
+                <?php
+                include_once("./Controllers/FileController.php?action=ListFiles");
+                ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
 </body>
 

@@ -26,13 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
         $fileid = $_GET["id"];
         $arquivo = $fileModel->ObterArquivo($fileid);
         header("Location: " . $arquivo["caminho"]);
-    } elseif ($_GET["action"] == "listfiles") {
+    } elseif ($_GET["action"] == "ListFiles") {
         $arquivos = $fileModel->ListarArquivos($_SESSION["userId"]);
 
         foreach ($arquivos as $arquivo) {
+            echo "<tr>";
             echo "<td>" . $arquivo["id"] . "</td>";
             echo "<td>" . $arquivo["UserId"] . "</td>";
             echo "<td>" . $arquivo["caminho"] . "</td>";
+            echo "</tr>";
         }
     }
 }
