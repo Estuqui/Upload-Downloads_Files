@@ -1,1 +1,5 @@
 https://www.kodingmadesimple.com/2016/09/file-upload-view-and-download-php-mysql.html
+
+https://cursos.alura.com.br/forum/topico-como-fazer-uma-tabela-em-php-usando-echo-71768
+
+https://alexandrebbarbosa.wordpress.com/2018/06/28/phpcrud-com-mvc/comment-page-1/
