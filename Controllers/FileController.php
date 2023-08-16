@@ -34,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
             echo "<td>" . $arquivo["id"] . "</td>";
             echo "<td>" . $arquivo["UserId"] . "</td>";
             echo "<td>" . $arquivo["caminho"] . "</td>";
-            echo "</tr>";
+            //Adicionar botão para baixar arquivo e para visualizar arquivo
+            //Verificar, revisar e finalizar código para amanhã (16/08/2023 - quinta-feira)
         }
     }
 }
