@@ -47,7 +47,7 @@ if (!isset($_SESSION["loggedIn"])) {
             </thead>
             <tbody>
                 <?php
-                include_once("./Controllers/FileController.php?action=ListFiles");
+                include_once("../Controllers/FileController.php?action=ListFiles");
                 ?>
                 <tr>
                     <td></td>
