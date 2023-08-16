@@ -7,4 +7,3 @@
     } else {
         include("../html/Views/Login.php"); 
     }
-?>
