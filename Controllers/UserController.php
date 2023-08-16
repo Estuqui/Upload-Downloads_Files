@@ -12,9 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($authResult["auth"]) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['userId'] = $authResult['id'];
-    
+
             header("Location: /");
-            
         } else {
             echo "Senha inválida";
         }
@@ -29,8 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
         session_unset();
         session_destroy();
         header("Location: /");
-    } elseif ($_GET["action"] == "register") {
-        //Terminar
+    } elseif ($_GET["action"] == "register") { //VERIFICAR ISSO 
+        $email = '';
+        $password = '';
         include_once("../Views/Register.php");
     }
 }

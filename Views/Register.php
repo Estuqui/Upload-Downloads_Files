@@ -11,8 +11,8 @@
 
 <body>
     <div class=" form-box">
-        <h2>CADASTRO</h2>
-        <form action="#" method="POST">
+        <h2>Cadastro</h2>
+        <form action="/Controllers/UserController.php" method="POST">
 
             <div class="input-group">
                 <label for="email">Digite seu email</label>

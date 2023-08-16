@@ -32,7 +32,7 @@ if (!isset($_SESSION["loggedIn"])) {
     <h1>Upload de Arquivos <i class="bi bi-cloud-upload-fill"></i></h1>
 
     <form action="/Controllers/FileController.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".pdf,.txt,.doc,.docx">
+        <input type="file" name="file" accept=".pdf,.txt,.doc,.docx,.jpg,.png">
         <input type="submit" value="Enviar Arquivo">
     </form>
 
