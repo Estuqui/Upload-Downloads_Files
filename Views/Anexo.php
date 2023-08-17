@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION["loggedIn"])) {
-    header("Location: Login.php");
-}
+    include_once("../Configuration/Auth.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +8,9 @@ if (!isset($_SESSION["loggedIn"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Views/CSS/AnexoEstilo.css">
+    <link rel="stylesheet" href="CSS/AnexoEstilo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css " rel="stylesheet">
     <title>Home</title>
 
 <body>
@@ -21,7 +20,7 @@ if (!isset($_SESSION["loggedIn"])) {
             <a href="#"> <i class="bi bi-box-seam-fill"></i> </a>
         </div>
 
-        <ul>
+        <ul style="margin-bottom:0">
             <li> <a href="/Views/Suporte.php"> Suporte <i class="bi bi-person-fill-gear"></i> </a> </li>
             <li> <a href="/Controllers/UserController.php?action=logout"> Exit <i class="bi bi-box-arrow-right"></i>
                 </a>
@@ -29,31 +28,33 @@ if (!isset($_SESSION["loggedIn"])) {
         </ul>
 
     </nav>
-    <h1>Upload de Arquivos <i class="bi bi-cloud-upload-fill"></i></h1>
+    <div class="container mt-2">
+        <h1>Upload de Arquivos <i class="bi bi-cloud-upload-fill"></i></h1>
 
-    <form action="/Controllers/FileController.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".pdf,.txt,.doc,.docx,.jpg,.png">
-        <input type="submit" value="Enviar Arquivo">
-    </form>
+        <div class="mt-4 mb-4 text-center">
+            <form action="/Controllers/FileController.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf,.txt,.doc,.docx,.jpg,.png">
+                <input type="submit" value="Enviar Arquivo">
+            </form>
+        </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Id </th>
-                <th scope="col">Usuário </th>
-                <th scope="col">Caminho do Arquivo </th>
-                <th scope="col">Visualizar </th>
-                <th scope="col">Download </th>
-            </tr>
-        </thead>
 
-        <tbody>
-            <?php
-            include_once("../Controllers/FileController.php?action=ListFiles");
-            ?>
-            <tr></tr>
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usuário </th>
+                    <th scope="col">Caminho do Arquivo </th>
+                    <th scope="col">Visualizar </th>
+                    <th scope="col">Download </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php include_once("../Controllers/FileController.php"); ?>
+            </tbody>
+        </table>
+    </div>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js "></script>
 </body>
 
 </html>

@@ -1,41 +1,44 @@
 <?php
-session_start();
-require_once("../Model/FileModel.php");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    require_once("../Model/FileModel.php");
 
     $fileModel = new FileModel();
-    $filename = $_FILES["file"]["name"];
-    $fileTemp = $_FILES["file"]["tmp_name"];
-    $caminho = "../Uploads/" . $filename;
-    $userId = $_SESSION['userId'];
 
-    if (is_uploaded_file($fileTemp)) {
-        move_uploaded_file($fileTemp, $caminho);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        session_start();
+        $filename = $_FILES["file"]["name"];
+        $fileTemp = $_FILES["file"]["tmp_name"];
+        $caminho = "../Uploads/" . $filename;
+        $userId = $_SESSION['userId'];
+
+        if (is_uploaded_file($fileTemp)) {
+            //sudo chmod 777 -R /var/www/html/Uploads
+            move_uploaded_file($fileTemp, $caminho);
+        }
+
+        $fileModel->InserirArquivo($userId, $caminho);
+
+        header("Location: /");
     }
 
-    $fileModel->InserirArquivo($userId, $caminho);
-
-    header("Location: /");
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
-    $fileModel = new FileModel();
-
-    if ($_GET["action"] == "getfile") {
-        $fileid = $_GET["id"];
-        $arquivo = $fileModel->ObterArquivo($fileid);
-        header("Location: " . $arquivo["caminho"]);
-    } elseif ($_GET["action"] == "ListFiles") {
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
+        if ($_GET["action"] == "getfile") {
+            $fileid = $_GET["id"];
+            $arquivo = $fileModel->ObterArquivo($fileid);
+            header("Location: " . $arquivo["caminho"]);
+        }
+    } else {
         $arquivos = $fileModel->ListarArquivos($_SESSION["userId"]);
 
-        foreach ($arquivos as $arquivo) {
+        foreach ($arquivos as $item) {
             echo "<tr>";
-            echo "<td>" . $arquivo["id"] . "</td>";
-            echo "<td>" . $arquivo["UserId"] . "</td>";
-            echo "<td>" . $arquivo["caminho"] . "</td>";
-            //Adicionar botão para baixar arquivo e para visualizar arquivo target _blank
-            //Verificar, revisar e finalizar código para amanhã (16/08/2023 - quinta-feira)
+            echo "<td>" . $item["id"] . "</td>";
+            echo "<td>" . $item["nome"] . "</td>";
+            echo "<td>" . substr($item["caminho"],11) . "</td>";
+            echo "<td><a href='" . $item["caminho"] . "' target='_blank'>VER</a></td>";
+            echo "<td><a href='" . $item["caminho"] . "' download='" . substr($item["caminho"],11) . "'>BAIXAR</a></td>";
+            echo "</tr>";
         }
     }
-}
+
+    
+?>

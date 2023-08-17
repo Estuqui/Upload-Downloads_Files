@@ -7,8 +7,8 @@ class FileModel
     public function InserirArquivo($UserId, $CaminhodoArquivo)
     {
         $pdo = GetDb();
-        $stmt = $pdo->prepare("INSERT INTO anexos (UserId, caminho) VALUES (?, ?)");
-        $stmt->execute([$UserId, $CaminhodoArquivo]);
+        $stmt = $pdo->prepare("INSERT INTO anexos (UserId, caminho) VALUES ('$UserId', '$CaminhodoArquivo')");
+        $stmt->execute();
     }
 
     public function ObterArquivo($arquivoId)
@@ -22,9 +22,11 @@ class FileModel
     public function ListarArquivos($userId)
     {
         $pdo = GetDb();
-        $stmt = $pdo->prepare("SELECT * FROM anexos WHERE UserId = $userId");
-        $stmt->execute([$userId]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $pdo->prepare("SELECT a.*, u.nome FROM anexos AS a
+                                LEFT JOIN usuarios AS u ON u.id = a.UserId 
+                                WHERE UserId = $userId");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 

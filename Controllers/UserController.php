@@ -34,3 +34,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
         include_once("../Views/Register.php");
     }
 }
+
+?>
