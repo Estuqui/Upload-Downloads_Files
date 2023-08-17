@@ -1,5 +1,5 @@
 <?php
-    include_once("../Configuration/Auth.php");
+include_once("../Configuration/Auth.php");
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +39,14 @@
         </div>
 
 
-        <table class="table table-striped">
+        <table class="table table-striped mt-5">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Usuário </th>
-                    <th scope="col">Caminho do Arquivo </th>
-                    <th scope="col">Visualizar </th>
-                    <th scope="col">Download </th>
+                    <th scope="col" class='text-nowrap text-center'>#</th>
+                    <th scope="col" class='text-nowrap text-center'>Usuário </th>
+                    <th scope="col" class='text-nowrap text-center'>Caminho do Arquivo </th>
+                    <th scope="col" class='text-nowrap text-center'>Visualizar </th>
+                    <th scope="col" class='text-nowrap text-center'>Download </th>
                 </tr>
             </thead>
             <tbody>

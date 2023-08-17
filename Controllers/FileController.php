@@ -11,7 +11,6 @@
         $userId = $_SESSION['userId'];
 
         if (is_uploaded_file($fileTemp)) {
-            //sudo chmod 777 -R /var/www/html/Uploads
             move_uploaded_file($fileTemp, $caminho);
         }
 
@@ -31,11 +30,11 @@
 
         foreach ($arquivos as $item) {
             echo "<tr>";
-            echo "<td>" . $item["id"] . "</td>";
-            echo "<td>" . $item["nome"] . "</td>";
-            echo "<td>" . substr($item["caminho"],11) . "</td>";
-            echo "<td><a href='" . $item["caminho"] . "' target='_blank'>VER</a></td>";
-            echo "<td><a href='" . $item["caminho"] . "' download='" . substr($item["caminho"],11) . "'>BAIXAR</a></td>";
+            echo "<td class='text-nowrap text-center'>" . $item["id"] . "</td>";
+            echo "<td class='text-nowrap text-center'>" . $item["nome"] . "</td>";
+            echo "<td class='text-nowrap text-center'>" . substr($item["caminho"],11) . "</td>";
+            echo "<td class='text-nowrap text-center'><a href='" . $item["caminho"] . "' target='_blank'>VER</a></td>";
+            echo "<td class='text-nowrap text-center'><a href='" . $item["caminho"] . "' download='" . substr($item["caminho"],11) . "'>BAIXAR</a></td>";
             echo "</tr>";
         }
     }
